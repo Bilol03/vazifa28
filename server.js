@@ -1,13 +1,15 @@
 import { errController } from './controllers/error.controller.js'
 import { connectDB } from './config/db.js'
-import express from 'express'
+import authRoute from "./routes/auth.routes.js"
 import { config } from 'dotenv'
+import express from 'express'
 config()
 
 let app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
+app.use('/auth', authRoute)
 
 connectDB()
 app.use(errController);
