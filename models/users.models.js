@@ -42,7 +42,7 @@ let UserSchema = new mongoose.Schema(
         role: {
             type: String,
             required: true,
-            default: "user"
+            default: { type: String, enum: ["teacher", "student"], required: true }
         }
 	},
 	{
