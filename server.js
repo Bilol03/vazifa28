@@ -1,6 +1,7 @@
 import { errController } from './controllers/error.controller.js'
-import { connectDB } from './config/db.js'
+import subjectRoute from "./routes/subject.routes.js"
 import authRoute from "./routes/auth.routes.js"
+import { connectDB } from './config/db.js'
 import { config } from 'dotenv'
 import express from 'express'
 config()
@@ -10,6 +11,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 app.use('/auth', authRoute)
+app.use(subjectRoute)
 
 connectDB()
 app.use(errController);
